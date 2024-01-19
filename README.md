@@ -1,5 +1,5 @@
 # DiffMatch
-Offical code implementation of 'DiffMatch: Diffusion Model for Dense Matching' (ICLR'24 Oral).
+Offical code implementation of 'DiffMatch: Diffusion Model for Dense Matching (ICLR'24 Oral)'.
 
 
 Code is coming soon. 
