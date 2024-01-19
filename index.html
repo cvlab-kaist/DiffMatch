@@ -152,18 +152,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p style="font-size: 15px;">
-            The objective for establishing dense correspondence between paired images consists of two terms: a data term and a prior term. 
-            While conventional techniques focused on defining hand-designed prior terms, which are difficult to formulate, recent approaches 
-            have focused on learning the data term with deep neural networks without explicitly modeling the prior, assuming that the model 
-            itself has the capacity to learn an optimal prior from a large-scale dataset. The performance improvement was obvious, however, 
-            they often fail to address inherent ambiguities of matching, such as textureless regions, repetitive patterns, and large displacements. 
-            To address this, we propose <i>DiffMatch</i>, a novel conditional diffusion-based framework designed to explicitly model both the data and prior terms. 
-            Unlike previous approaches, this is accomplished by leveraging a conditional denoising diffusion model. 
-            <i>DiffMatch</i> consists of two main components: conditional denoising diffusion module and cost injection module. 
-            We stabilize the training process and reduce memory usage with a stage-wise training strategy. 
-            Furthermore, to boost performance, we introduce an inference technique that finds a better path to the accurate matching field. 
-            Our experimental results demonstrate significant performance improvements of our method over existing approaches, 
-            and the ablation studies validate our design choices along with the effectiveness of each component.
+            The objective for establishing dense correspondence between paired images con- sists of two terms: a data term and a prior term. While conventional techniques focused on defining hand-designed prior terms, which are difficult to formulate, recent approaches have focused on learning the data term with deep neural net- works without explicitly modeling the prior, assuming that the model itself has the capacity to learn an optimal prior from a large-scale dataset. The performance improvement was obvious, however, they often fail to address inherent ambiguities of matching, such as textureless regions, repetitive patterns, large displacements, or noises. To address this, we propose <i>DiffMatch</i>, a novel conditional diffusion-based framework designed to explicitly model both the data and prior terms for dense matching. This is accomplished by leveraging a conditional denoising diffusion model that explicitly takes matching cost and injects the prior within generative process. However, limited resolution of the diffusion model is a major hindrance. We address this with a cascaded pipeline, starting with a low-resolution model, followed by a super-resolution model that successively upsamples and incorporates finer details to the matching field. Our experimental results demonstrate signifi- cant performance improvements of our method over existing approaches, and the ablation studies validate our design choices along with the effectiveness of each component.
           </p>
         </div>
       </div>
@@ -178,7 +167,7 @@
             
           <div class="content has-text-justified">
             <p style="font-size: 15px;">
-              <strong>Overall network architecture of DiffMatch.</strong> Our network consists of two key components: a conditional denoising diffusion module that generates the matching fields based on the conditions, and a cost injection module that embeds further pixel-wise interactions among paired source and target images into the diffusion module.
+              <strong>Overall network architecture of DiffMatch.</strong> Given source and target images, our conditional diffusion-based network estimates the dense correspondence between the two images. We leverage two conditions: the initial correspondence and the local matching cost, which finds long-range matching and embeds local pixel-wise interactions, respectively.
             </p>
           </div>
         </div>
@@ -186,22 +175,6 @@
     </div> 
     <br>
 
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Inference</h2>
-          <img style="max-width: 100%;" src="static/images/diffmatch_inference-1.png">
-          <div class="content has-text-justified">
-            <p style="font-size: 15px;">
-              <strong>Illustration of the proposed inference technique:</strong> To stabilize the reverse diffusion process, we measure the mean of estimated multiple matching flows from different initializations. We iteratively reinitialize the initial matching field with the previously estimated one. Subsequently, we find the most confident estimated match among the flow candidates through cycle consistency.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <br>
-    
     
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
