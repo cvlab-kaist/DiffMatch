@@ -1,0 +1,16 @@
+opencv-python 
+torch
+torchvision
+jpeg4py
+packaging
+imageio
+scipy
+pycocotools
+pandas
+blobfile
+tensorflow
+einops
+timm
+scikit-image
+pandas
+numpy==1.23.1
